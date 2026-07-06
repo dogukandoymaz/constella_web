@@ -73,16 +73,13 @@
 <body>
 
 <div class="container">
-    <!-- Tab Navigation -->
     <div class="nav-tabs">
         <button class="tab-btn active" onclick="switchTab('privacy')">Privacy Policy</button>
         <button class="tab-btn" onclick="switchTab('terms')">Terms of Use</button>
     </div>
 
-    <!-- Content Card -->
     <div class="content-card">
         
-        <!-- Privacy Policy Section -->
         <div id="privacy" class="content-section active">
             <h1>Privacy Policy for Constella</h1>
             <p><strong>Effective date:</strong> 06/07/2026</p>
@@ -199,7 +196,6 @@
             E-mail: <a href="mailto:dogukan@dplan-app.com">dogukan@dplan-app.com</a></p>
         </div>
 
-        <!-- Terms of Use Section -->
         <div id="terms" class="content-section">
             <h1>Terms of Use (End User License Agreement) for Constella</h1>
             <p><strong>Effective date:</strong> 06/07/2026</p>
@@ -306,11 +302,9 @@
         const targetSection = document.getElementById(tabId);
         if (targetSection) {
             targetSection.classList.add('active');
-            // Tıklanan butonu aktif et (Eğer fonksiyon buton üzerinden çağrıldıysa)
-            if (event && event.currentTarget && event.currentTarget.classList.contains('tab-btn')) {
-                event.currentTarget.classList.add('active');
+            if (window.event && window.event.currentTarget && window.event.currentTarget.classList.contains('tab-btn')) {
+                window.event.currentTarget.classList.add('active');
             } else {
-                // Eğer URL üzerinden gelindiyse ilgili butonu bulup aktif et
                 document.querySelectorAll('.tab-btn').forEach(btn => {
                     if (btn.getAttribute('onclick').includes(tabId)) {
                         btn.classList.add('active');
@@ -320,7 +314,6 @@
         }
     }
 
-    // URL sonundaki #privacy veya #terms ifadesini kontrol eden fonksiyon
     window.addEventListener('DOMContentLoaded', () => {
         const hash = window.location.hash.replace('#', '');
         if (hash === 'privacy' || hash === 'terms') {
